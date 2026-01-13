@@ -1,0 +1,120 @@
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.quick-action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.quick-action-item:hover {
+  transform: translateY(-2px);
+}
+
+.quick-action-item:active {
+  transform: scale(0.95);
+}
+
+.action-icon-wrapper {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.action-icon-wrapper svg {
+  width: 24px;
+  height: 24px;
+}
+
+.quick-action-item:hover .action-icon-wrapper {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.action-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* 3 columns variant */
+.quick-actions.cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* 2 columns variant */
+.quick-actions.cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.quick-actions.cols-2 .action-icon-wrapper {
+  width: 60px;
+  height: 60px;
+}
+
+.quick-actions.cols-2 .action-icon-wrapper svg {
+  width: 28px;
+  height: 28px;
+}
+
+.quick-actions.cols-2 .action-label {
+  font-size: 0.8125rem;
+}
+
+/* Responsive */
+@media (max-width: 360px) {
+  .quick-actions {
+    gap: 0.5rem;
+    padding: 1rem 0.75rem;
+  }
+
+  .action-icon-wrapper {
+    width: 44px;
+    height: 44px;
+  }
+
+  .action-icon-wrapper svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .action-label {
+    font-size: 0.6875rem;
+  }
+}
+
+/* Dark mode */
+[data-theme="dark"] .quick-actions {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .quick-action-item:hover .action-icon-wrapper {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Bounce animation */
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.quick-action-item:active .action-icon-wrapper {
+  animation: iconBounce 0.3s ease;
+}

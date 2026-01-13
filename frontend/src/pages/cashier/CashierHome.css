@@ -1,0 +1,224 @@
+.cashier-home {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Error Banner */
+.error-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: var(--color-error-light);
+  border: 1px solid var(--color-error);
+  border-radius: var(--radius-lg);
+  color: var(--color-error);
+}
+
+.error-banner svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.error-banner span {
+  flex: 1;
+  font-size: 0.9375rem;
+}
+
+.error-banner button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: none;
+  background: transparent;
+  color: var(--color-error);
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.error-banner button:hover {
+  opacity: 1;
+}
+
+/* Customer Section */
+.customer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 480px) {
+  .action-buttons {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Success Modal Content */
+.success-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.success-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: var(--radius-full);
+  background: var(--color-success-light);
+  color: var(--color-success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.success-icon svg {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.success-amount {
+  margin-bottom: 1.5rem;
+}
+
+.success-amount span {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.text-success {
+  color: var(--color-success);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.success-details {
+  width: 100%;
+  background: var(--color-background);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.success-detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  font-size: 0.9375rem;
+}
+
+.success-detail + .success-detail {
+  border-top: 1px dashed var(--color-border);
+}
+
+.success-detail span:first-child {
+  color: var(--color-text-secondary);
+}
+
+.success-detail span:last-child {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.success-points span:last-child {
+  color: var(--color-secondary);
+}
+
+.success-ref span:last-child {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.success-actions {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.success-actions > * {
+  flex: 1;
+}
+
+/* Transactions List */
+.transactions-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.no-transactions {
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: 2rem;
+}
+
+.transaction-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+.transaction-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.transaction-type {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.type-success {
+  color: var(--color-success);
+}
+
+.type-primary {
+  color: var(--color-primary);
+}
+
+.type-warning {
+  color: var(--color-warning);
+}
+
+.type-error {
+  color: var(--color-error);
+}
+
+.transaction-time {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.transaction-amount span {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* Loading State */
+.cashier-home > .spinner-container {
+  min-height: 300px;
+}

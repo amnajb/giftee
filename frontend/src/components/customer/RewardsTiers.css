@@ -1,0 +1,216 @@
+.rewards-tiers {
+  overflow: hidden;
+}
+
+.tiers-track {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tier-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--color-background);
+  border-radius: var(--radius-lg);
+  position: relative;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.tier-item.unlocked {
+  background: linear-gradient(135deg, rgba(0, 112, 74, 0.08), rgba(203, 162, 88, 0.08));
+  border-color: var(--color-star);
+}
+
+.tier-item.next {
+  border-color: var(--color-primary);
+  border-style: dashed;
+}
+
+.tier-item:not(.unlocked) {
+  opacity: 0.7;
+}
+
+/* Stars Badge */
+.tier-stars {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: var(--color-surface);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  min-width: 70px;
+  justify-content: center;
+}
+
+.tier-item.unlocked .tier-stars {
+  background: var(--color-star);
+}
+
+.stars-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.tier-item.unlocked .stars-value {
+  color: white;
+}
+
+.stars-icon {
+  font-size: 0.875rem;
+  color: var(--color-star);
+}
+
+.tier-item.unlocked .stars-icon {
+  color: white;
+}
+
+/* Icon */
+.tier-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
+}
+
+/* Content */
+.tier-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.tier-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.tier-description {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+/* Redeem Button */
+.redeem-btn {
+  background: var(--color-primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.redeem-btn:hover {
+  background: var(--color-primary-hover);
+  transform: scale(1.05);
+}
+
+/* Progress Indicator */
+.progress-indicator {
+  background: var(--color-primary);
+  color: white;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Horizontal Scroll Variant */
+.rewards-tiers.horizontal .tiers-track {
+  flex-direction: row;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.rewards-tiers.horizontal .tier-item {
+  flex-direction: column;
+  min-width: 140px;
+  scroll-snap-align: start;
+  text-align: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1rem;
+}
+
+.rewards-tiers.horizontal .tier-stars {
+  order: -1;
+}
+
+.rewards-tiers.horizontal .tier-content {
+  text-align: center;
+}
+
+/* Scrollbar hidden for horizontal */
+.rewards-tiers.horizontal .tiers-track::-webkit-scrollbar {
+  display: none;
+}
+
+.rewards-tiers.horizontal .tiers-track {
+  scrollbar-width: none;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .tier-item {
+    padding: 0.875rem;
+    gap: 0.75rem;
+  }
+
+  .tier-stars {
+    padding: 0.375rem 0.5rem;
+    min-width: 60px;
+  }
+
+  .stars-value {
+    font-size: 0.875rem;
+  }
+
+  .tier-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+
+  .tier-title {
+    font-size: 0.875rem;
+  }
+
+  .tier-description {
+    font-size: 0.75rem;
+  }
+
+  .redeem-btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Dark mode */
+[data-theme="dark"] .tier-item {
+  background: var(--color-surface-elevated);
+}
+
+[data-theme="dark"] .tier-stars {
+  background: var(--color-surface);
+}
+
+[data-theme="dark"] .tier-icon {
+  background: var(--color-surface);
+}

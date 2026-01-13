@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:6
+    container_name: giftee-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: giftee
+    networks:
+      - giftee-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # Backend API
+  backend:
+    build: ./backend
+    container_name: giftee-backend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/giftee
+      - JWT_SECRET=${JWT_SECRET:-giftee-jwt-secret-change-in-production-32chars}
+      - JWT_EXPIRES_IN=15m
+      - NODE_ENV=${NODE_ENV:-production}
+      - PORT=3000
+      - CORS_ORIGINS=http://localhost:5173,http://localhost:5174,http://frontend,http://admin
+      - QR_SECRET=${QR_SECRET:-giftee-qr-secret-change-me}
+      - LINE_CHANNEL_ID=${LINE_CHANNEL_ID:-}
+      - LINE_CHANNEL_SECRET=${LINE_CHANNEL_SECRET:-}
+      - LIFF_ID=${LIFF_ID:-}
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - giftee-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/health', (r) => { process.exit(r.statusCode === 200 ? 0 : 1) })"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  # Frontend (Customer & Cashier)
+  frontend:
+    build: ./frontend
+    container_name: giftee-frontend
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    networks:
+      - giftee-network
+
+  # Admin Dashboard
+  admin:
+    build: ./admin
+    container_name: giftee-admin
+    restart: unless-stopped
+    ports:
+      - "5174:80"
+    depends_on:
+      - backend
+    networks:
+      - giftee-network
+
+volumes:
+  mongo-data:
+    driver: local
+
+networks:
+  giftee-network:
+    driver: bridge

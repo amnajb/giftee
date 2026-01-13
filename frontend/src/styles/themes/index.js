@@ -1,0 +1,113 @@
+export const themes = {
+  default: {
+    name: 'default',
+    colors: {
+      primary: '#1E3932',
+      primaryLight: '#00704A',
+      primaryDark: '#1A3129',
+      primaryHover: '#006241',
+      secondary: '#CBA258',
+      secondaryLight: '#D4AF6A',
+      secondaryDark: '#B8944A',
+      background: '#F7F7F7',
+      backgroundAlt: '#EDEDED',
+      surface: '#FFFFFF',
+      surfaceElevated: '#FFFFFF',
+      text: {
+        primary: '#1E3932',
+        secondary: '#6B7280',
+        muted: '#9CA3AF',
+        inverse: '#FFFFFF',
+      },
+      border: '#E5E7EB',
+      borderLight: '#F3F4F6',
+      star: '#CBA258',
+      accent: {
+        success: '#00754A',
+        successLight: '#E8F5E9',
+        warning: '#F2A900',
+        warningLight: '#FFF8E1',
+        error: '#D62B1F',
+        errorLight: '#FFEBEE',
+        info: '#1E3932',
+        infoLight: '#E0F2F1',
+      },
+      tier: {
+        green: '#00704A',
+        gold: '#CBA258',
+        platinum: '#8B8B8B',
+      },
+    },
+    shadows: {
+      sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+      md: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+      lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+      xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+    },
+    borderRadius: {
+      sm: '0.5rem',
+      md: '0.75rem',
+      lg: '1rem',
+      xl: '1.5rem',
+      full: '9999px',
+    },
+  },
+
+  dark: {
+    name: 'dark',
+    colors: {
+      primary: '#00704A',
+      primaryLight: '#00A862',
+      primaryDark: '#006241',
+      primaryHover: '#00A862',
+      secondary: '#D4AF6A',
+      secondaryLight: '#E5C17D',
+      secondaryDark: '#CBA258',
+      background: '#1E3932',
+      backgroundAlt: '#2C4A42',
+      surface: '#2C4A42',
+      surfaceElevated: '#3A5A52',
+      text: {
+        primary: '#FFFFFF',
+        secondary: '#D4E4DC',
+        muted: '#A8C4BC',
+        inverse: '#1E3932',
+      },
+      border: '#3A5A52',
+      borderLight: '#2C4A42',
+      star: '#D4AF6A',
+      accent: {
+        success: '#00A862',
+        successLight: 'rgba(0, 168, 98, 0.15)',
+        warning: '#FFC107',
+        warningLight: 'rgba(255, 193, 7, 0.15)',
+        error: '#EF4444',
+        errorLight: 'rgba(239, 68, 68, 0.15)',
+        info: '#00704A',
+        infoLight: 'rgba(0, 112, 74, 0.15)',
+      },
+      tier: {
+        green: '#00A862',
+        gold: '#D4AF6A',
+        platinum: '#A0A0A0',
+      },
+    },
+    shadows: {
+      sm: '0 1px 2px 0 rgba(0, 0, 0, 0.3)',
+      md: '0 4px 6px -1px rgba(0, 0, 0, 0.4)',
+      lg: '0 10px 15px -3px rgba(0, 0, 0, 0.4)',
+      xl: '0 20px 25px -5px rgba(0, 0, 0, 0.4)',
+    },
+    borderRadius: {
+      sm: '0.5rem',
+      md: '0.75rem',
+      lg: '1rem',
+      xl: '1.5rem',
+      full: '9999px',
+    },
+  },
+};
+
+export const getTheme = (themeName) => themes[themeName] || themes.default;
+
+export default themes;
